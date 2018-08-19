@@ -2,57 +2,48 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 class Map extends Component {
- componentDidMount() {
+constructor(props) {
+	super(props)
+}
+
+componentDidMount() {
     this.loadMap();
-  }
+}
 
-  constructor(props) {
-    super(props)
-    this.places =    [
-        {title: 'Zoo', location: {lat: 45.568721, lng: 18.667556}}, 
-        {title: 'Mall', location: {lat: 45.546505,  lng: 18.656361  }},
-        {title: 'Muzej okusa', location: {lat: 45.548297,  lng: 18.695243 }},
-        {title: 'Kopika', location: {lat: 45.565273,  lng: 18.697384 }},
-        {title: 'Old Bridge Pub', location: {lat: 45.559959,  lng: 18.697492 }}
+componentDidUpdate(prevProps, prevState) {
+    if (prevProps.google !== this.props.google) {
+      this.loadMap();
+    }
+}
 
-    ]
-  }
-
-  loadMap() {
+loadMap() {
     if (this.props && this.props.google) {
-      const { google } = this.props;
-      const maps = google.maps;
-      const mapRef = this.refs.map;
-      const node = ReactDOM.findDOMNode(mapRef);
-      const mapConfig = Object.assign({}, {
-        center: {lat: 45.5549624, lng: 18.6955144}, 
-        zoom: 14
-      })
+        const {google} = this.props;
+        const maps = google.maps;
+        const mapRef = this.refs.map;
+        const divMapElement = ReactDOM.findDOMNode(mapRef);
 
-      this.map = new maps.Map(node, mapConfig);
+        let zoom = 13;
+        const center = new maps.LatLng(lat, lng);
 
-      this.places.forEach( place => { 
-        const marker = new google.maps.Marker({
-          position: {lat: place.location.lat, lng: place.location.lng}, 
-          map: this.map, 
-          title: place.name,
-          animation: google.maps.Animation.DROP
-        });        
-      })
+        // make an object with map settings
+        const mapObj = Object.assign({}, {
+          center: center,
+          zoom: zoom
+        })
 
-  }
+        this.map = new maps.Map(divMapElement, mapObj);
+         
+    }
 }
 
 render() {
-        const style = {
-            width: '100vw',
-            height: '100vh'
-          }
-        return (
-            <div ref='map' className="map-container" style={style}>
-                Loading map...
-            </div>
-        )
+    const style = { width: '100vw', height: '100vh' }
+    return (
+        <div ref='map' className="map-container" style={style}>
+            Loading map...
+        </div>
+    )
     }
 }
 
