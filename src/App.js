@@ -13,7 +13,9 @@ class App extends Component {
   }
 }
 
+// API key from https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyARC-a63vxOWRRAgpjnDYOndn_2fFLYhAo',
 })(App)
   
+ 

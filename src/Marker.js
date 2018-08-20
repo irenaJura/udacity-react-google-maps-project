@@ -1,31 +1,36 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class Marker extends Component {
 
-    componentDidMount() {
+  componentDidUpdate(prevProps) {
+    if ((this.props.map !== prevProps.map) ||
+        (this.props.position !== prevProps.position)) {
         this.renderMarker();
+    }
+  }
+
+  renderMarker() {
+      if (this.marker) {
+        this.marker.setMap(null);
       }
 
-      renderMarker() {
-          let { map, google, position, mapCenter } = this.props;
-          let defaultIcon = this.makeMarkerIcon('0091ff');
-          let pos = position;
-          position = new google.maps.LatLng(pos.lat, pos.lng);
-
-         const markerObj = { position: position, icon: defaultIcon };
-         this.marker = new google.maps.Marker(markerObj);
-      }
+      let { map, google, position } = this.props;
       
-      makeMarkerIcon(markerColor) {
-        const markerImage = new this.props.google.maps.MarkerImage('http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'
-        + markerColor +'|40|_|%E2%80%A2',
-        return markerImage;
-      }
+      let pos = position;
+      position = new google.maps.LatLng(pos.lat, pos.lng);
 
-      render() {
-        return null;
-       
-      }
+      const setMarker = {
+        map: map,
+        position: position,
+        animation: google.maps.Animation.DROP
+      };
+      this.marker = new google.maps.Marker(setMarker);
+  }
+
+  render() {
+    return null;
+   
+  }
 }
 
 export default Marker;

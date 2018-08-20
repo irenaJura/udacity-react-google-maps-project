@@ -1,49 +1,57 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Marker from './Marker';
+import * as places from './places';
 
 class Map extends Component {
-constructor(props) {
-	super(props)
-}
 
-componentDidMount() {
-    this.loadMap();
-}
-
-componentDidUpdate(prevProps, prevState) {
-    if (prevProps.google !== this.props.google) {
-      this.loadMap();
+    componentDidMount() {
+        this.loadMap();
     }
-}
 
-loadMap() {
-    if (this.props && this.props.google) {
-        const {google} = this.props;
-        const maps = google.maps;
-        const mapRef = this.refs.map;
-        const divMapElement = ReactDOM.findDOMNode(mapRef);
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.google !== this.props.google) {
+          this.loadMap();
+        }
+    }
+    
+    loadMap() {
+        if (this.props && this.props.google) {
+            const {google} = this.props;
+            const maps = google.maps;
 
-        let zoom = 13;
-        const center = new maps.LatLng(lat, lng);
+            const mapRef = this.refs.map;
+            const divMapElement = ReactDOM.findDOMNode(mapRef);
 
-        // make an object with map settings
-        const mapObj = Object.assign({}, {
-          center: center,
-          zoom: zoom
-        })
+            const { lat, lng } = places.city;
+            const center = new maps.LatLng(lat, lng);
+            const mapObj = Object.assign({}, {
+              center: center,
+              zoom: 13
+            })
+                    
+            this.map = new maps.Map(divMapElement, mapObj);
+            this.forceUpdate();
+        }
+    }
 
-        this.map = new maps.Map(divMapElement, mapObj);
+    render() {
+        const style = { width: '100vw', height: '100vh' }
          
-    }
-}
-
-render() {
-    const style = { width: '100vw', height: '100vh' }
-    return (
-        <div ref='map' className="map-container" style={style}>
-            Loading map...
-        </div>
-    )
+        return (
+            <div ref='map' className="map-container" style={style}>
+                Loading map...
+                {places.locations.map( (location, index) => (
+                    <Marker key={index} 
+                        google={this.props.google}
+                        map={this.map}
+                        title={'The marker`s title will appear as a tooltip.'}
+                        name={'SOMA'}
+                        position={location.location}
+                     />
+                ))}
+            </div>
+        )
     }
 }
 
