@@ -31,6 +31,10 @@ class Map extends Component {
             })
                     
             this.map = new maps.Map(divMapElement, mapObj);
+            // set bounds
+            this.bounds = new google.maps.LatLngBounds();
+            // infowindow pop up
+            this.infoWindow = new google.maps.InfoWindow();
             this.forceUpdate();
         }
     }
@@ -45,9 +49,10 @@ class Map extends Component {
                     <Marker key={index} 
                         google={this.props.google}
                         map={this.map}
-                        title={'The marker`s title will appear as a tooltip.'}
-                        name={'SOMA'}
+                        title={location.title}
                         position={location.location}
+                        bounds={this.bounds}
+                        infoWindow={this.infoWindow}
                      />
                 ))}
             </div>
