@@ -17,7 +17,7 @@ class Map extends Component {
     
     loadMap() {
         if (this.props && this.props.google) {
-            const {google} = this.props;
+            const { google } = this.props;
             const maps = google.maps;
 
             const mapRef = this.refs.map;

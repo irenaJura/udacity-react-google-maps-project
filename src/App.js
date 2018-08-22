@@ -18,7 +18,6 @@ class App extends Component {
   }
 
   onChangeMarker(marker) {
-   
     this.markersGoogle.push(marker);
 
     if(this.markersGoogle.length === places.locations.length) {
@@ -34,13 +33,10 @@ class App extends Component {
       }
       return location;
     })
-    console.log(result);
     
     this.setState({ locationsGoogle: result })
-    
   }
 
-  
   render() {
     return (
       <div className="App">
@@ -48,7 +44,7 @@ class App extends Component {
           onChangeMarker={this.onChangeMarker}
           locationsGoogle={this.state.locationsGoogle}
         />
-        <Nav />
+        <Nav handleQuery={this.handleQuery} />
       </div>
     );
   }
