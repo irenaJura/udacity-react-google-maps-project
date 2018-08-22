@@ -2,18 +2,13 @@
   text-align: center;
 }
 
+.main-container {
+	position: absolute;
+	top: 50px;
+}
+
 .info {
 	max-width: 500px;
-}
-
-.place-photo {
-	width: 200px;
-	height: 180px;
-}
-
-.place-tips {
-	max-width: 300px;
-	margin: 0 auto;
 }
 
 .warning {
@@ -21,3 +16,45 @@
 	color: crimson;
 }
 
+.navbar {
+	height: 50px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.site-title {
+	margin: 15px 20px 0;
+	color: #000;
+}
+
+#search-input {
+	margin: 10px 0;
+	padding: 2px 5px;
+	height: 26px;
+}
+
+.list-box {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 50px;
+    right: 10%;
+    background: grey;
+    color: #fff;
+    visibility: hidden;
+}
+
+ul {
+	margin: 0;
+	padding: 10px 0;
+}
+
+li {
+	list-style-type: none;
+	padding: 5px 0;
+}
+
+.show {
+	visibility: visible;
+}

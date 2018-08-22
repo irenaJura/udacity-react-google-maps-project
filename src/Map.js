@@ -40,8 +40,8 @@ class Map extends Component {
     }
 
     render() {
-        const style = { width: '100vw', height: '100vh' }
-         
+        const style = { width: '100vw', height: '85vh' }
+        const { onChangeMarker } = this.props;
         return (
             <div ref='map' className="map-container" style={style}>
                 Loading map...
@@ -53,6 +53,7 @@ class Map extends Component {
                         position={location.location}
                         bounds={this.bounds}
                         infoWindow={this.infoWindow}
+                        onChangeMarker={onChangeMarker}
                      />
                 ))}
             </div>

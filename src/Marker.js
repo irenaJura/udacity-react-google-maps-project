@@ -15,7 +15,7 @@ class Marker extends Component {
         this.marker.setMap(null);
       }
 
-      let { map, google, position, bounds, infoWindow } = this.props;
+      let { map, google, position, bounds, infoWindow, onChangeMarker } = this.props;
       
       let pos = position;
       position = new google.maps.LatLng(pos.lat, pos.lng);
@@ -27,11 +27,16 @@ class Marker extends Component {
       };
       this.marker = new google.maps.Marker(setMarker);
       const marker = this.marker;
+
+      onChangeMarker(this);
+
       // on click event handler for info window 
       let self = this;
       marker.addListener('click', function() {
         self.showInfoWindow(this, infoWindow);
       });
+
+      onChangeMarker(this);
 
       bounds.extend(marker.position);
       map.fitBounds(bounds); 
