@@ -8,7 +8,7 @@
 }
 
 .info {
-	max-width: 500px;
+	max-width: 300px;
 }
 
 .warning {
@@ -24,7 +24,7 @@
 }
 
 .site-title {
-	margin: 15px 20px 0;
+	margin: 10px 20px;
 	color: #000;
 }
 
@@ -35,14 +35,18 @@
 }
 
 .list-box {
-    width: 200px;
+    min-width: 200px;
     height: auto;
     position: absolute;
     top: 50px;
     right: 10%;
-    background: grey;
+    background: rgba(100,100,100, .8);
     color: #fff;
     visibility: hidden;
+}
+
+#close-btn {
+	padding: 10px;
 }
 
 ul {
@@ -52,9 +56,37 @@ ul {
 
 li {
 	list-style-type: none;
-	padding: 5px 0;
+	padding: 8px 0;
+	cursor: pointer;
+}
+
+li:hover {
+	background: #000;
 }
 
 .show {
 	visibility: visible;
+}
+
+@media screen and (max-width: 550px) {
+	.main-container, .list-box {
+		position: absolute;
+		top: 100px;
+	}
+
+	.navbar {
+		display: flex;
+		flex-direction: column;
+		height: 80px;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.site-title {
+		font-size: 18px;
+	}
+
+	.list-box {
+		width: 150px;	
+	}
 }

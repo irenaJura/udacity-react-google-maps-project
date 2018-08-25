@@ -27,24 +27,26 @@ class App extends Component {
 
   handleQuery(query) {
     let result = this.state.locationsGoogle.map( location => {
-      let matched = location.props.title.toLowerCase().indexOf(query) >= 0;
+      let matched = location.props.title.toLowerCase().indexOf(query) === 0;
       if (location.marker) {
         location.marker.setVisible(matched);
       }
+      console.log(location);
       return location;
     })
     
     this.setState({ locationsGoogle: result })
+    console.log(result)
   }
 
   render() {
     return (
       <div className="App">
+        <Nav handleQuery={this.handleQuery} />
         <Container google={this.props.google} 
           onChangeMarker={this.onChangeMarker}
           locationsGoogle={this.state.locationsGoogle}
         />
-        <Nav handleQuery={this.handleQuery} />
       </div>
     );
   }

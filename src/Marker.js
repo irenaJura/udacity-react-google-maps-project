@@ -25,7 +25,9 @@ class Marker extends Component {
         position: position,
         animation: google.maps.Animation.DROP
       };
+
       this.marker = new google.maps.Marker(setMarker);
+
       const marker = this.marker;
 
       onChangeMarker(this);
@@ -35,8 +37,6 @@ class Marker extends Component {
       marker.addListener('click', function() {
         self.showInfoWindow(this, infoWindow);
       });
-
-      onChangeMarker(this);
 
       bounds.extend(marker.position);
       map.fitBounds(bounds); 
@@ -86,7 +86,7 @@ class Marker extends Component {
                   innerHTML += '<div class="place-photo">';
                   for(let i = 0; i < photosData.length; i++) {
                     const photo = photosData[i];
-                    innerHTML += `<img alt="${title}, visitor's photo ${i + 1}" src="${photo.prefix}200x180${photo.suffix}" />`;
+                    innerHTML += `<img alt="${title}, visitor's photo ${i + 1}" src="${photo.prefix}120x120${photo.suffix}" />`;
                   }
 
                   //Tips
