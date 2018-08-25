@@ -5,7 +5,20 @@ import Container from './Container';
 import Nav from './Nav';
 import * as places from './places';
 
+//Handling when  Google's API have any Problem on the request
+document.addEventListener("DOMContentLoaded", function(e) {
+  let googleScript = document.getElementsByTagName('SCRIPT').item(1);
+  googleScript.onerror = function(e) {
+    console.log('Ops! We cant access Google Maps API for now!')
+    let container = document.querySelector('map-container');
+    let message = document.createElement('div');
+    message.innerHTML = '<div class="error-msg">Sorry, we can not access to Google Maps API right now! Please try again later</div>'
+    container.appendChild(message)
+  }
+})
+
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +38,7 @@ class App extends Component {
     }
   }
 
+  // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/setVisible
   handleQuery(query) {
     let result = this.state.locationsGoogle.map( location => {
       let matched = location.props.title.toLowerCase().indexOf(query) === 0;
@@ -36,7 +50,7 @@ class App extends Component {
     })
     
     this.setState({ locationsGoogle: result })
-    console.log(result)
+    console.log(result);
   }
 
   render() {

@@ -2,6 +2,7 @@ export const city = {
         lat: 45.555422,
         lng: 18.69539
 }
+
 export const locations = 
     [
         {title: 'Zoo', location: {lat: 45.568721, lng: 18.667556}}, 

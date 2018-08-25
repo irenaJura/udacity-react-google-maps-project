@@ -9,7 +9,7 @@ export default class Container extends Component {
 
     return (
       <div>
-        <main role="presentation"  aria-label="Map of faourite places in Osijek" className="main-container">
+        <main role="presentation" aria-label="Map of favourite places in Osijek" className="main-container">
           <Map google={google} onChangeMarker={onChangeMarker} />
         </main>
           <ListPlaces locationsGoogle={locationsGoogle} />

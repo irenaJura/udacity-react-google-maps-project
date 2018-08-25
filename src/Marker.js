@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import './App.css';
 
+// https://developers.google.com/maps/documentation/javascript/markers
 class Marker extends Component {
 
   componentDidUpdate(prevProps) {
@@ -55,6 +56,7 @@ class Marker extends Component {
       infowindow.setContent('Loading');
 
         // fetch info from Foursquare API
+        // https://developer.foursquare.com/docs/api/venues/details
         let placeID = null;
         let tipList = null;
         fetch(`https://api.foursquare.com/v2/venues/search?ll=45.555422,18.69539&v=20180518&query=${title}&limit=1&client_id=QXAZZTUZGR0IZ1I1VBUQIXJWWVQSX43HND5TNR25IXWGNS4N&client_secret=I0RPLG3XJILJMPF4BFMCAULOPYI5EJWP5UUCO2VIKBSKNRDP`)

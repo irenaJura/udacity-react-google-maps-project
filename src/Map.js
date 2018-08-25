@@ -19,7 +19,8 @@ class Map extends Component {
         if (this.props && this.props.google) {
             const { google } = this.props;
             const maps = google.maps;
-
+            
+            // https://reactjs.org/docs/refs-and-the-dom.html
             const mapRef = this.refs.map;
             const divMapElement = ReactDOM.findDOMNode(mapRef);
 
