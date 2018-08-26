@@ -1,4 +1,4 @@
-﻿React Google Maps Project (FEND Udacity Nanodegree)
+﻿### React Google Maps Project (FEND Udacity Nanodegree)
 
 ## Description
 
@@ -6,7 +6,7 @@ The project was about making a responsive Google Map of a certain area and displ
 
 ## How to run the app
 
-Clone or dowload this repo. Using your command line cd into this folder, run npm install and npm start. To check how to use npm visit: https://docs.npmjs.com/getting-started/what-is-npm 
+Clone or download this repo. Using your command line cd into this folder, run npm install and npm start. To check how to use npm visit: https://docs.npmjs.com/getting-started/what-is-npm 
 
 ## API Requests 
 
@@ -18,5 +18,6 @@ I used semantic HTML elements and added ARIA-roles when needed.
 
 ## Offline use
 
-The app uses a service worker to cache responses to requests, so that vissited pages can be re-visited in offline mode. 
-
+The app uses a service worker to cache responses to requests, so that visited pages can be re-visited in offline mode. This Service worker is enabled in production build. To test it locally build the application by typing npm run build and start an http server from your build directory. See here https://www.npmjs.com/package/http-server for more info. 
+
+

@@ -114,10 +114,7 @@ class Marker extends Component {
         infowindow.marker = null;
       });
   
-      // Open the infowindow on the correct marker.
-      // google.maps.event.addDomListener(window, 'resize', function() {
-      //   infowindow.open(map, marker);
-      // });
+      // Open the infowindow on the correct marker
       infowindow.open(map, marker);
       map.fitBounds(bounds);
       map.panTo(marker.getPosition());

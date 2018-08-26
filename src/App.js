@@ -9,11 +9,11 @@ import * as places from './places';
 document.addEventListener("DOMContentLoaded", function(e) {
   let googleScript = document.getElementsByTagName('SCRIPT').item(1);
   googleScript.onerror = function(e) {
-    console.log('Ops! We cant access Google Maps API for now!')
-    let container = document.querySelector('map-container');
+    console.log('Google Maps error!')
+    let container = document.querySelector('.map-container');
     let message = document.createElement('div');
-    message.innerHTML = '<div class="error-msg">Sorry, we can not access to Google Maps API right now! Please try again later</div>'
-    container.appendChild(message)
+    message.innerHTML = '<div class="error-msg">Sorry, we can not access Google Maps API right now! Please try again later</div>'
+    container.appendChild(message);
   }
 })
 
@@ -66,9 +66,9 @@ class App extends Component {
   }
 }
 
-// API key from https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/
+// API key from https://developers.google.com/maps/documentation/javascript/get-api-key
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyARC-a63vxOWRRAgpjnDYOndn_2fFLYhAo',
+  apiKey: 'AIzaSyDn2AxuD5ez8A9GoNeC5RTKFDXWRBn5qqM',
 })(App)
   
  
